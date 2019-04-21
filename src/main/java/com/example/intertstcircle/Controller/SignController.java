@@ -6,6 +6,7 @@ import com.example.intertstcircle.Service.UserSignService;
 import com.example.intertstcircle.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +28,12 @@ public class SignController {
     public User user;
 
     @RequestMapping(value = "/signin",method = RequestMethod.GET)
-    public String signin_get(ModelMap map){
+    public String signin_get(Model map){
         return "signin";
     }
 
     @RequestMapping(value = "/signin",method = RequestMethod.POST)
-    public String signin_post(HttpServletRequest req){
+    public String signin_post(HttpServletRequest req,Model map){
         uname = req.getParameter("username");
         pwd = req.getParameter("password");
         user.setUsername(uname);
@@ -45,21 +46,19 @@ public class SignController {
 
 
     @RequestMapping(value = "/main",method = RequestMethod.GET)
-    public String main_view(ModelMap map){
+    public String main_view(Model map){
         map.addAttribute("username",uname);
         map.addAttribute("password",pwd);
         return "main";
     }
 
-
-
     @RequestMapping(value = "/signup",method = RequestMethod.GET)
-    public String signip_get(ModelMap map){
+    public String signup_get(Model map){
         return "signup";
     }
 
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
-    public String signup_post(HttpServletRequest req){
+    public String signup_post(Model map,HttpServletRequest req){
         uname = req.getParameter("username");
         pwd = req.getParameter("password");
         sure_pwd=req.getParameter("sure_pwd");
@@ -67,7 +66,8 @@ public class SignController {
             user.setUsername(uname);
             user.setPassword(pwd);
             if(userSignService.selectUsercount(user)!=0){
-                return "redirect:/sign/signup";
+                map.addAttribute("msg","had_signup");
+                return "signup";
             }
             userSignService.insertUser(user);
             return "redirect:/sign/main";
@@ -81,12 +81,9 @@ public class SignController {
     }
 
     @RequestMapping("/forgot")
-    public String forgot(ModelMap map){
+    public String forgot(Model map){
         return "forgot";
     }
-
-
-
 
 
 }

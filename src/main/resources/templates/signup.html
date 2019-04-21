@@ -3,7 +3,8 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns:th="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,6 +43,7 @@
     <script src="../static/js/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 <body>
 
@@ -52,7 +54,9 @@
             <!-- Start Sign In Form -->
             <form  class="fh5co-form animate-box" data-animate-effect="fadeIn" method="post">
                 <h2>注册</h2>
-
+                <div class="form-group">
+                    <div class="alert alert-success" role="alert" th:if="${msg}">Your info has been saved.</div>
+                </div>
                 <div class="form-group">
                     <label for="name" class="sr-only">用户名</label>
                     <input type="text" class="form-control" id="name" name="username" placeholder="用户名" autocomplete="off">

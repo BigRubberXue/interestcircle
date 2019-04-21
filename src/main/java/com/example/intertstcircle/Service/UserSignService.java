@@ -16,9 +16,9 @@ public class UserSignService {
     private JdbcTemplate jdbcTemplate;
 
     public void insertUser(User user){
+
         jdbcTemplate.update("INSERT INTO myuser(username,password) VALUE (?,?)",user.getUsername(),user.getPassword());
-        log.info("当前用户----用户名："+user.getUsername()+"    密码："+user.getPassword());
-        log.info("成功注册一名用户");
+        log.info("用户名："+user.getUsername()+"密码："+user.getPassword());
     }
 
     public int selectUsercount(User user){
