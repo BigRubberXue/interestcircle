@@ -1,6 +1,6 @@
 package com.example.intertstcircle.Service;
 
-import com.example.intertstcircle.User;
+import com.example.intertstcircle.User.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

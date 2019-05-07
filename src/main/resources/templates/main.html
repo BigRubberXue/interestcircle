@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-<a>main page</a>
+<div class="container" th:replace="header::header"></div>
 
-<p th:text="${username}"></p>
-<p th:text="${password}"></p>
+<p th:text="${user.getUsername()}"></p>
+<p th:text="1111111"></p>
+
+<p th:text="${user.getPassword()}"></p>
 
 
 </body>
