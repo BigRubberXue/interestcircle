@@ -9,13 +9,79 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
+
+<!-- 头部 -->
 <div class="container" th:replace="header::header"></div>
 
-<p th:text="${user.getUsername()}"></p>
-<p th:text="1111111"></p>
+<!-- 轮播 -->
+<div class="container">
+    <div class="row clearfix" >
+        <div class="col-md-12 column">
+            <div class="carousel slide" id="carousel-949946">
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#carousel-949946">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-949946">
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-949946">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img alt="" src="../static/images/bg2.png"/>
 
-<p th:text="${user.getPassword()}"></p>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="../static/images/bg2.png" />
+                        <div class="carousel-caption">
+                            <h1>
+                                大橡皮的家正在搭建ing
+                            </h1>
 
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="../static/images/bg2.png" />
+                    </div>
+                </div> <a class="left carousel-control" href="#carousel-949946" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-949946" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <p></p>
+        </div>
 
+        <!-- 模态框 -->
+        <div align="center" >
+            <button type="button" href="#modal-container-508510" class="btn btn-default" data-toggle="modal"> 点击此处发表文章</button>
+
+        </div>
+        <div class="modal fade" id="modal-container-508510" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--<div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+                    </div>
+                    <div class="modal-body">
+                        内容...
+                    </div>-->
+                    <div class="modal-header">
+                    <form role="form" id="main_com_all">
+                        <h4>tell me your feeling</h4>
+                        <div class="form-group">
+                            <input type="email"  placeholder="enter your name" class="form-control" id="exampleInputEmail1" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password"  placeholder="enter your words" style="height: 100px" class="form-control" id="exampleInputPassword1" />
+                        </div>
+
+                        <button  class="btn btn-default" type="submit" data-dismiss="modal">submit</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 注脚 -->
+<div class="container" th:replace="footer::footer"></div>
 </body>
 </html>
