@@ -2,7 +2,9 @@ package com.example.intertstcircle.Controller;
 
 
 
+import com.example.intertstcircle.Service.ArticlesService;
 import com.example.intertstcircle.Service.UserSignService;
+import com.example.intertstcircle.User.Articles;
 import com.example.intertstcircle.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -25,8 +28,13 @@ public class SignController {
     public UserSignService userSignService;
 
     @Autowired
+    public ArticlesService articlesService;
+
+    @Autowired
     public User user;
 
+    @Autowired
+    public List<Articles> articles;
 
 
     @RequestMapping(value = "/signin",method = RequestMethod.GET)
@@ -34,6 +42,7 @@ public class SignController {
         //登陆
         return "signin";
     }
+
 
     @RequestMapping(value = "/signin",method = RequestMethod.POST)
     public String signin_post(HttpServletRequest req,Model model){
@@ -45,7 +54,9 @@ public class SignController {
         if(userSignService.checkUserExist(user)){
             HttpSession session = req.getSession();
             session.setAttribute("User",user);
-            return "redirect:/sign/main";
+            articles=articlesService.getAllarticles();
+            model.addAttribute("articles",articles);
+            return "main";
         }
         return "signin";
     }
@@ -53,10 +64,7 @@ public class SignController {
 
     @RequestMapping(value = "/main",method = RequestMethod.GET)
     public String main_view(Model model){
-        model.addAttribute(user);
-//        model.addAttribute("username",uname);
-//        model.addAttribute("password",pwd);
-
+        model.addAttribute("articles",articles);
         return "main";
     }
 
@@ -82,7 +90,9 @@ public class SignController {
             userSignService.insertUser(user);
             HttpSession session = req.getSession();
             session.setAttribute("User",user);
-            return "redirect:/sign/main";
+            articles=articlesService.getAllarticles();
+            model.addAttribute("articles",articles);
+            return "main";
         }
         else{
             sure_pwd = null;

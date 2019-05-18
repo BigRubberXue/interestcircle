@@ -49,10 +49,7 @@
         </div>
 
         <!-- 模态框 -->
-        <div align="center" >
-            <button type="button" href="#modal-container-508510" class="btn btn-default" data-toggle="modal"> 点击此处发表文章</button>
 
-        </div>
         <div class="modal fade" id="modal-container-508510" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -79,10 +76,48 @@
                 </div>
             </div>
         </div>
-    </div></div>
+    </div>
+</div>
+
+<!--文章显示-->
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="panel panel-success"  th:each="article : ${articles}">
+                <div class="panel-heading">
+                    <h3 class="panel-title" >
+                        <a  th:text="${article.article_title}" />
+                    </h3>
+                </div>
+                <div class="panel-body" ><a th:text="${article.article}" />
+                </div>
+                <div class="panel-footer">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#"> <span class="badge pull-right" th:text="${article.reward}"></span>Get</a>
+                        </li>
+                        <li>
+                            <a href="#"> <span class="badge pull-right"></span>More</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row clearfix">
+        <div align="center" >
+            <button type="button" href="#modal-container-508510" class="btn btn-default" data-toggle="modal"> 点击此处发表文章</button>
+        </div>
+    </div>
+</div>
+<p></p>
+
+
 <!-- 注脚 -->
-
-
 <div class="container" th:replace="footer::footer"></div>
 </body>
 </html>

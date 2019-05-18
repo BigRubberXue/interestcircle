@@ -35,8 +35,12 @@
                         <li>
                             <a href="#">   欢迎你</a>
                         </li>
+
                         <li>
-                            <a href="#"  id="name">甲</a>
+                            <a href="#"  id="name_null" th:if="${session.User}==null">NULL</a>
+                        </li>
+                        <li>
+                            <a href="#"  id="name" th:if="${session.User}!=null" th:text="${session.User.username}"></a>
                         </li>
                     </ul>
                 </div>
