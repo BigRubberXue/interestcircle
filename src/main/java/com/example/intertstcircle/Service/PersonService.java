@@ -29,4 +29,6 @@ public class PersonService {
         return jdbcTemplate.queryForObject("select * from person_user where user_id=?",UserMessage.class,myuser.getUser_id());
     }
 
+
+
 }
