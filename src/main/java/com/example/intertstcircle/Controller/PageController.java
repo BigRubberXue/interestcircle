@@ -35,34 +35,43 @@ public class PageController {
     @Autowired
     public List<Articles> articles;
 
+    @Autowired
+    public UserMessage userMessage;
+
     @ModelAttribute
     public void init(HttpSession session){
         user=(User)session.getAttribute("User");
-      //  articles=articlesService.getAllarticles();
+        userMessage=personService.getUserMessage(user.getUser_id());
     }
 
     @RequestMapping(value = "/person_page",method = RequestMethod.GET)
-    public String person_page(Model model) {
-        //User myuser = personService.mymessage(user);
-        model.addAttribute("user", user);
+    public String person_page_GET(Model model) {
+        model.addAttribute("mymessage",userMessage);
+        model.addAttribute("userX", user);
         return "person_page";
     }
 
+    /*@RequestMapping(value = "/person_page",method = RequestMethod.POST)
+    public String person_page_POST(Model model) {
+        return "person_page";
+    }
+*/
+
     @RequestMapping(value = "/person_change",method = RequestMethod.POST)
     public String changeMessage(Model model, HttpServletRequest request){
-        String address=request.getParameter("address");
-        String phone=request.getParameter("phone");
-        String mail=request.getParameter("mail");
-        String job=request.getParameter("job");
+        String address=request.getParameter("address")==""?userMessage.getAddress():request.getParameter("address");
+        String phone=request.getParameter("phone")==""?userMessage.getPhone():request.getParameter("phone");
+        String mail=request.getParameter("mail")==""?userMessage.getMail():request.getParameter("mail");
+        String job=request.getParameter("job")==""?userMessage.getJob():request.getParameter("job");
         UserMessage msg = new UserMessage(user.getUser_id(),address,phone,mail,job);
         personService.UpdateMyMessage(msg);
-        return "person_page";
+        return "redirect:person_page";
     }
 
     @RequestMapping(value = "/person_change",method = RequestMethod.GET)
     public String person_change(Model model){
-        UserMessage msg = personService.getUserMessage(user);
-        model.addAttribute("my_msg",msg);
+        model.addAttribute("user",user);
+        model.addAttribute("msg",userMessage);
         return "person_change";
     }
 

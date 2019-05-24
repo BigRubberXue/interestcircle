@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form style="margin: 10px;width: 100%;">
+    <p><a>title:</a><a th:text="${article.getArticle_title()}"></a></p>
+    <p><a>words:</a><a th:text="${article.getArticle()}"></a></p>
+    <p><a>reward:</a><a th:text="${article.getReward()}"></a></p>
+    <p><a>user:</a><a th:text="${authorName}"></a></p>
+</form>
+</body>
+</html>

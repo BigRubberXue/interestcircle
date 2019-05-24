@@ -1,5 +1,6 @@
 package com.example.intertstcircle.Service;
 
+import com.example.intertstcircle.SqlRowMapper.ArticleRowMapper;
 import com.example.intertstcircle.User.ArticleMessage;
 import com.example.intertstcircle.User.Articles;
 import lombok.extern.slf4j.Slf4j;
@@ -26,12 +27,12 @@ public class ArticlesService {
 
     public Articles getArticle(int articleId){
         Articles article = new Articles();
-        article=jdbcTemplate.queryForObject("select * from article where articleId=?",Articles.class);
+        System.out.println("select * from article where articleId="+articleId);
+        String s = "select * from article where article_id="+articleId;
+        article=jdbcTemplate.queryForObject(s,new ArticleRowMapper());
         log.info("查找完成");
         return article;
     }
-
-
 
     public int getArticleId(String ArticleTitle){
         //get article_id by ArticleTitle

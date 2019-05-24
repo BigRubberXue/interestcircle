@@ -52,11 +52,12 @@ public class SignController {
         user.setUsername(uname);
         user.setPassword(pwd);
         if(userSignService.checkUserExist(user)){
+            user=userSignService.getUserByUsername(uname);
             HttpSession session = req.getSession();
             session.setAttribute("User",user);
             articles=articlesService.getAllarticles();
             model.addAttribute("articles",articles);
-            return "main";
+            return "redirect:main";
         }
         return "signin";
     }
@@ -87,12 +88,14 @@ public class SignController {
                 model.addAttribute("msg","had_signup");
                 return "signup";
             }
+            user.setName("未命名");
             userSignService.insertUser(user);
+            user.setUser_id(userSignService.getUserIdByUsername(uname));
             HttpSession session = req.getSession();
             session.setAttribute("User",user);
             articles=articlesService.getAllarticles();
             model.addAttribute("articles",articles);
-            return "main";
+            return "redirect:main";
         }
         else{
             sure_pwd = null;

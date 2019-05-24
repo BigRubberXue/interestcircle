@@ -54,7 +54,7 @@
                                 <li><a class="scroll"  href="#">Experience</a></li>
                                 <li><a class="scroll"  href="#">Portfolio</a></li>
                                 <li><a class="scroll"  href="#">Blog</a></li>
-                                <li><a class="scroll"  href="#">Contact</a></li>
+                                <li><a  href="/index/person_change">Change</a></li>
                             </ul>
                         </nav>
                         <!-- script-for-menu -->
@@ -80,37 +80,31 @@
                         <li>
                             <ul class="address-text">
                                 <li><b>NAME</b></li>
-                                <li>I'M ROB LEE</li>
+                                <li><p th:text="${userX.getName()}"> </p></li>
                             </ul>
                         </li>
                         <li>
                             <ul class="address-text">
-                                <li><b>D.O.B</b></li>
-                                <li>23-06-1980</li>
+                                <li><b>JOB</b></li>
+                                <li><p th:text="${mymessage.getJob()}"> </li>
                             </ul>
                         </li>
                         <li>
                             <ul class="address-text">
                                 <li><b>PHONE </b></li>
-                                <li>+00 111 222 3333</li>
+                                <li><p th:text="${mymessage.getPhone()}"><li>
                             </ul>
                         </li>
                         <li>
                             <ul class="address-text">
                                 <li><b>ADDRESS </b></li>
-                                <li>756 Global Place,New York.</li>
+                                <li><p th:text="${mymessage.getAddress()}"></li>
                             </ul>
                         </li>
                         <li>
                             <ul class="address-text">
                                 <li><b>E-MAIL </b></li>
-                                <li><a href="mailto:example@mail.com"> mail@example.com</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <ul class="address-text">
-                                <li><b>WEBSITE </b></li>
-                                <li><a href="#">www.myresume.com</a></li>
+                                <li><p th:text="${mymessage.getMail()}"></li>
                             </ul>
                         </li>
 
@@ -127,10 +121,10 @@
 </div>
 
 
-<a  th:text="${user.username}" />
+
 <!--注脚-->
 
-
+<div class="container" th:replace="footer::footer"></div>
 
 </body>
 </html>

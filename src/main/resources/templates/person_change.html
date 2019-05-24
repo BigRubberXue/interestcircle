@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Home</title>
+    <link href="../static/person_page/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../static/person_page/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="../static/person_page/css/style1.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="text/javascript" src="../static/person_page/js/move-top.js"></script>
+    <script type="text/javascript" src="../static/person_page/js/easing.js"></script>
+    <script type="text/javascript">
+        document.getElementById("NameIn").setAttribute("placeholder",msg.getName());
+    </script>
+    <!---- start-smoth-scrolling---->
 
+<body>
+<!--header-->
+
+<!-- 介绍-->
+
+<!-- container -->
+<!-- header -->
+<form style="margin: 10px;width: 80%" method="post">
+
+    <p>
+        Name:<a th:text="${user.getName()}"></a>
+
+    </p>
+    <p>
+        Job:<input type="text" th:if="${msg}!=null" placeholder=${msg.getJob()} name="job">
+    </p>
+    <p>
+        Phone:<input type="text" th:if="${msg}!=null" placeholder=${msg.getPhone()}   name="phone">
+
+    </p>
+    <p>
+        Address: <input type="text"  th:if="${msg}!=null" placeholder=${msg.getAddress()} name="address">
+
+    </p>
+    <p>
+        Mail:<input type="text" th:if="${msg}!=null" placeholder=${msg.getMail} name="mail">
+    </p>
+
+    <input type="submit" value="Submit">
+</form>
+<!--注脚-->
+
+
+<div class="container" th:replace="footer::footer"></div>
 </body>
 </html>
