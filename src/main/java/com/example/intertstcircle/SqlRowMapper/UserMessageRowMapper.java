@@ -16,11 +16,12 @@ public class UserMessageRowMapper  implements RowMapper<UserMessage> {
         String phone = resultSet.getString("phone");
         //把数据封装成User对象
         UserMessage userMessage = new UserMessage();
-        userMessage.setUser_id(user_id);
-        userMessage.setAddress(address);
-        userMessage.setMail(mail);
-        userMessage.setJob(job);
-        userMessage.setPhone(phone);
+        userMessage.builder().user_id(user_id)
+                    .address(address)
+                    .mail(mail)
+                    .job(job)
+                    .phone(phone)
+                    .build();
         return userMessage;
     }
 }

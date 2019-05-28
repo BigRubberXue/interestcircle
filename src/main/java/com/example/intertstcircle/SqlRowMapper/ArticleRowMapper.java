@@ -15,11 +15,13 @@ public class ArticleRowMapper implements RowMapper<Articles> {
         Integer reward=resultSet.getInt("reward");
         Integer article_id=resultSet.getInt("article_id");
         Articles article = new Articles();
-        article.setArticle_title(article_title);
-        article.setArticle(articleM);
-        article.setArticle_id(article_id);
-        article.setReward(reward);
-        article.setUser_id(user_id);
+        article.builder()
+                .article_title(article_title)
+                .article(articleM)
+                .article_id(article_id)
+                .reward(reward)
+                .user_id(user_id)
+                .build();
         return article;
     }
 }

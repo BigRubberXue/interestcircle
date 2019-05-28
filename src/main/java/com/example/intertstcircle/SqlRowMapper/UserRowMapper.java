@@ -16,12 +16,14 @@ public class UserRowMapper implements RowMapper<User> {
         Integer attention=resultSet.getInt("attention");
         Integer gift=resultSet.getInt("gift");
         User user = new User();
-        user.setUser_id(user_id);
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setName(name);
-        user.setAttention(attention);
-        user.setGift(gift);
+        user.builder()
+                .user_id(user_id)
+                .username(username)
+                .password(password)
+                .name(name)
+                .attention(attention)
+                .gift(gift)
+                .build();
         return user;
     }
 }

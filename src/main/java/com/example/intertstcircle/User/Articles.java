@@ -1,6 +1,7 @@
 package com.example.intertstcircle.User;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Articles {
     private String article_title;
     private String article;
